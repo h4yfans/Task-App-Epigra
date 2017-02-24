@@ -16,7 +16,7 @@ Please check the system requirements before installing TaskApp.
 2. Go to your `homestead.yaml` file and add your project path under `sites` and add your db name under `databases`
 3. Run `vagrant up`
 4. Run `php artisan serve` or edit your `host` file and add 'localhost' or `192.168.10.10`(vagrant)
-5. Or just use XAMPP. Extract the files into `htdocs` modify `.env` and run `php artisan server`
+5. Or just use XAMPP. Extract the files into `htdocs` modify `.env` and run `php artisan serve`
 
 
 ### PHP Libraries
