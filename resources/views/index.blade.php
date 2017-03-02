@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+
     <div class="text-center">
         <h3><i class="fa fa-angle-right"></i> Todo Listelerim</h3>
     </div>
@@ -8,6 +9,8 @@
         @foreach(Auth::user()->todos()->get() as $todo)
             <div class="mt centered">
                 <div class="col-md-8 col-md-offset-2">
+                    @include('includes.info-box')
+
                     <section class="task-panel tasks-widget">
                         <div class="panel-heading">
                             <h5><i class="fa fa-tasks"></i> {{$todo->name}}</h5>

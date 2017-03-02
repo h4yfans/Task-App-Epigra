@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateAddListRequest;
 use App\Todo;
 use Illuminate\Http\Request;
 
@@ -22,16 +23,13 @@ class TodoController extends Controller
     /**
      * Yeni bir TodoList yarat
      *
-     * @param Request $request
+     * @param CreateAddListRequest|Request $request
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function postAddListAction(Request $request)
+    public function postAddListAction(CreateAddListRequest $request)
     {
 
-        $this->validate($request, [
-            'list_name' => 'required|min:5'
-        ]);
 
         $todo              = new Todo();
         $todo->name        = $request['list_name'];

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateAddTaskRequest;
 use App\Task;
 use App\Todo;
 use Carbon\Carbon;
@@ -36,12 +37,9 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postAddTaskAction(Request $request, $id)
+    public function postAddTaskAction(CreateAddTaskRequest $request, $id)
     {
-        $this->validate($request, [
-            'task_new'    => 'required',
-            'task_repeat' => 'required|integer'
-        ]);
+
 
         $start_date = Carbon::now();
         $end_date   = Carbon::now()->addDay($request['task_repeat']);
@@ -88,12 +86,12 @@ class TaskController extends Controller
      * Güncellenmek istenen Task'ı güncelle.
      * Eğer güncellenmek istenen Gün Tekrarı aynı ise condition'ı pas geç.
      *
-     * @param Request $request
+     * @param CreateAddTaskRequest|Request $request
      * @param $id
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postUpdateTaskAction(Request $request, $id)
+    public function postUpdateTaskAction(CreateAddTaskRequest $request, $id)
     {
         $this->validate($request, [
             'task_new'    => 'required',
